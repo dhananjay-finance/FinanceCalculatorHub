@@ -1,0 +1,264 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+/* Navbar */
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    background:white;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#0d6efd;
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:#0d6efd;
+}
+
+/* Hero Section */
+
+.hero{
+    text-align:center;
+    padding:80px 20px;
+    background:linear-gradient(135deg,#0d6efd,#4f8cff);
+    color:white;
+}
+
+.hero h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+/* Search Box */
+
+#searchInput{
+    width:90%;
+    max-width:600px;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    display:block;
+    margin:20px auto;
+}
+
+/* Homepage Calculator Section */
+
+.category-section{
+    padding:60px 40px;
+}
+
+.category-section h2{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:36px;
+}
+
+.calculator-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    max-width:1400px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    transition:all 0.3s ease;
+    height:100%;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card-link{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* Calculator Pages */
+
+.calculator-container{
+    max-width:900px;
+    margin:50px auto;
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+.calculator-container h1{
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:30px;
+}
+
+.calculator-container label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.calculator-container input,
+.calculator-container select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    margin-bottom:15px;
+}
+
+.calculator-container button{
+    width:100%;
+    padding:15px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.calculator-container button:hover{
+    background:#1d4ed8;
+}
+
+.result-box{
+    margin-top:25px;
+    background:#eef2ff;
+    padding:20px;
+    border-radius:10px;
+}
+
+/* Footer */
+
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:50px;
+}
+
+.footer-links{
+    margin-bottom:15px;
+}
+
+.footer-links a,
+.footer-links a:visited{
+    color:white;
+    text-decoration:none;
+    margin:0 8px;
+}
+
+.footer-links a:hover{
+    text-decoration:underline;
+}
+
+/* Mobile Responsive */
+
+@media(max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+        padding:20px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .category-section{
+        padding:40px 20px;
+    }
+}.search-box{
+    width:600px !important;
+    max-width:90% !important;
+    padding:15px !important;
+    border:none !important;
+    border-radius:10px !important;
+    font-size:16px !important;
+    display:block !important;
+    margin:20px auto !important;
+}@media (max-width: 768px) {
+
+    .navbar{
+        flex-direction:column;
+        padding:15px;
+    }
+
+    .logo{
+        margin-bottom:15px;
+        text-align:center;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+    }
+
+    .hero h1{
+        font-size:28px;
+        line-height:1.3;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    #searchInput{
+        width:95%;
+    }
+}
