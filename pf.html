@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PF Calculator - Finance Calculator Hub</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7fb;
+    margin:0;
+}
+
+.container{
+    max-width:700px;
+    margin:50px auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    color:#0d6efd;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    margin-bottom:20px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.result{
+    margin-top:20px;
+    padding:20px;
+    background:#eef5ff;
+    border-radius:8px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>PF Calculator</h1>
+
+<label>Monthly Basic Salary (₹)</label>
+<input type="number" id="salary">
+
+<label>Years of Service</label>
+<input type="number" id="years">
+
+<button onclick="calculatePF()">
+Calculate PF
+</button>
+
+<div class="result" id="result">
+Enter values and click Calculate.
+</div>
+
+</div>
+
+<script>
+
+function calculatePF(){
+
+let salary =
+parseFloat(document.getElementById("salary").value);
+
+let years =
+parseFloat(document.getElementById("years").value);
+
+let monthlyPF = salary * 0.12;
+
+let totalPF =
+monthlyPF * 12 * years;
+
+document.getElementById("result").innerHTML = `
+<p><strong>Monthly PF Contribution:</strong> ₹${monthlyPF.toFixed(2)}</p>
+<p><strong>Total PF Accumulated:</strong> ₹${totalPF.toFixed(2)}</p>
+`;
+
+}
+
+</script>
+
+</body>
+</html>

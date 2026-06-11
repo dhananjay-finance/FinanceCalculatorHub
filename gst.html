@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GST Calculator - Finance Calculator Hub</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="calculator-container">
+
+    <h1>GST Calculator</h1>
+
+    <label>Amount (₹)</label>
+    <input type="number" id="amount" value="1000">
+
+    <label>GST Rate (%)</label>
+    <input type="number" id="gstRate" value="18">
+
+    <label>Calculation Type</label>
+    <select id="gstType">
+        <option value="add">Add GST</option>
+        <option value="remove">Remove GST</option>
+    </select>
+
+    <button onclick="calculateGST()">Calculate GST</button>
+
+    <div id="result" class="result-box">
+        Enter values and click Calculate.
+    </div>
+
+</div>
+
+<script>
+function calculateGST() {
+
+    let amount = parseFloat(document.getElementById("amount").value);
+    let rate = parseFloat(document.getElementById("gstRate").value);
+    let type = document.getElementById("gstType").value;
+
+    let gstAmount, finalAmount;
+
+    if(type === "add") {
+
+        gstAmount = amount * rate / 100;
+        finalAmount = amount + gstAmount;
+
+        document.getElementById("result").innerHTML =
+        `
+        <p><strong>Original Amount:</strong> ₹${amount.toFixed(2)}</p>
+        <p><strong>GST Amount:</strong> ₹${gstAmount.toFixed(2)}</p>
+        <p><strong>Final Amount:</strong> ₹${finalAmount.toFixed(2)}</p>
+        `;
+
+    } else {
+
+        finalAmount = amount;
+        let originalAmount = amount / (1 + rate/100);
+        gstAmount = amount - originalAmount;
+
+        document.getElementById("result").innerHTML =
+        `
+        <p><strong>Original Amount:</strong> ₹${originalAmount.toFixed(2)}</p>
+        <p><strong>GST Amount:</strong> ₹${gstAmount.toFixed(2)}</p>
+        <p><strong>Total Amount:</strong> ₹${finalAmount.toFixed(2)}</p>
+        `;
+    }
+}
+</script>
+
+</body>
+</html>
