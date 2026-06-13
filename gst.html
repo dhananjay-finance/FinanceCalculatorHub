@@ -1,71 +1,212 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
+
 <head>
-    <title>GST Calculator - Finance Calculator Hub</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GST Calculator - Add or Remove GST Online Free</title>
+
+<meta name="description"
+content="Free GST Calculator to add GST, remove GST and calculate GST amount instantly. Supports 5%, 12%, 18% and 28% GST rates.">
+
+<meta name="keywords"
+content="GST Calculator, GST Calculator India, Add GST, Remove GST, GST Calculation">
+
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
+
+<nav class="navbar">
+
+<div class="logo">
+<a href="index.html" style="text-decoration:none;color:#0d6efd;">
+💰 Finance Calculator Hub
+</a>
+</div>
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+</ul>
+
+</nav>
 
 <div class="calculator-container">
 
-    <h1>GST Calculator</h1>
+<h1>GST Calculator</h1>
 
-    <label>Amount (₹)</label>
-    <input type="number" id="amount" value="1000">
+<label>Amount (₹)</label> <input type="number" id="amount" placeholder="Enter Amount">
 
-    <label>GST Rate (%)</label>
-    <input type="number" id="gstRate" value="18">
+<label>GST Rate (%)</label> <input type="number" id="gstRate" value="18">
 
-    <label>Calculation Type</label>
-    <select id="gstType">
-        <option value="add">Add GST</option>
-        <option value="remove">Remove GST</option>
-    </select>
+<label>Calculation Type</label>
 
-    <button onclick="calculateGST()">Calculate GST</button>
+<select id="gstType">
 
-    <div id="result" class="result-box">
-        Enter values and click Calculate.
-    </div>
+<option value="add">Add GST</option>
+
+<option value="remove">Remove GST</option>
+
+</select>
+
+<button onclick="calculateGST()">
+
+Calculate GST
+
+</button>
+
+<div id="result" class="result-box">
+
+Enter values and click Calculate.
 
 </div>
 
+</div>
+
+<section class="calculator-content">
+
+<h2>What is GST Calculator?</h2>
+
+<p>
+A GST Calculator helps calculate Goods and Services Tax (GST) by adding or removing GST from a base amount. It is useful for businesses, traders, accountants and consumers.
+</p>
+
+<h2>Benefits of GST Calculator</h2>
+
+<ul>
+
+<li>Instant GST calculation</li>
+
+<li>Add GST quickly</li>
+
+<li>Remove GST accurately</li>
+
+<li>Useful for invoicing and billing</li>
+
+<li>Reduces calculation mistakes</li>
+
+</ul>
+
+<h2>Common GST Rates in India</h2>
+
+<ul>
+
+<li>5% GST</li>
+
+<li>12% GST</li>
+
+<li>18% GST</li>
+
+<li>28% GST</li>
+
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>What is GST?</h3>
+
+<p>
+GST stands for Goods and Services Tax. It is an indirect tax levied on goods and services in India.
+</p>
+
+<h3>Can I remove GST using this calculator?</h3>
+
+<p>
+Yes. Select "Remove GST" to calculate the original amount before GST.
+</p>
+
+<h3>Can businesses use this calculator?</h3>
+
+<p>
+Yes. It is useful for businesses, traders, freelancers and consumers.
+</p>
+
+</section>
+
+<footer>
+
+<div class="footer-links">
+
+<a href="about.html">About Us</a> |
+
+<a href="contact.html">Contact</a> |
+
+<a href="privacy-policy.html">Privacy Policy</a> |
+
+<a href="disclaimer.html">Disclaimer</a> |
+
+<a href="terms.html">Terms</a>
+
+</div>
+
+<p>© 2026 Finance Calculator Hub</p>
+
+</footer>
+
 <script>
+
 function calculateGST() {
 
-    let amount = parseFloat(document.getElementById("amount").value);
-    let rate = parseFloat(document.getElementById("gstRate").value);
-    let type = document.getElementById("gstType").value;
+let amount = parseFloat(document.getElementById("amount").value);
 
-    let gstAmount, finalAmount;
+let rate = parseFloat(document.getElementById("gstRate").value);
 
-    if(type === "add") {
+let type = document.getElementById("gstType").value;
 
-        gstAmount = amount * rate / 100;
-        finalAmount = amount + gstAmount;
+if(!amount || !rate){
 
-        document.getElementById("result").innerHTML =
-        `
-        <p><strong>Original Amount:</strong> ₹${amount.toFixed(2)}</p>
-        <p><strong>GST Amount:</strong> ₹${gstAmount.toFixed(2)}</p>
-        <p><strong>Final Amount:</strong> ₹${finalAmount.toFixed(2)}</p>
-        `;
+document.getElementById("result").innerHTML =
+"Please enter all values.";
 
-    } else {
+return;
 
-        finalAmount = amount;
-        let originalAmount = amount / (1 + rate/100);
-        gstAmount = amount - originalAmount;
-
-        document.getElementById("result").innerHTML =
-        `
-        <p><strong>Original Amount:</strong> ₹${originalAmount.toFixed(2)}</p>
-        <p><strong>GST Amount:</strong> ₹${gstAmount.toFixed(2)}</p>
-        <p><strong>Total Amount:</strong> ₹${finalAmount.toFixed(2)}</p>
-        `;
-    }
 }
+
+let gstAmount, finalAmount;
+
+if(type === "add") {
+
+gstAmount = amount * rate / 100;
+
+finalAmount = amount + gstAmount;
+
+document.getElementById("result").innerHTML =
+
+`<p><strong>Original Amount:</strong> ₹${amount.toFixed(2)}</p>
+
+<p><strong>GST Amount:</strong> ₹${gstAmount.toFixed(2)}</p>
+
+<p><strong>Final Amount:</strong> ₹${finalAmount.toFixed(2)}</p>`;
+
+}
+
+else {
+
+finalAmount = amount;
+
+let originalAmount = amount / (1 + rate/100);
+
+gstAmount = amount - originalAmount;
+
+document.getElementById("result").innerHTML =
+
+`<p><strong>Original Amount:</strong> ₹${originalAmount.toFixed(2)}</p>
+
+<p><strong>GST Amount:</strong> ₹${gstAmount.toFixed(2)}</p>
+
+<p><strong>Total Amount:</strong> ₹${finalAmount.toFixed(2)}</p>`;
+
+}
+
+}
+
 </script>
 
 </body>
+
 </html>
