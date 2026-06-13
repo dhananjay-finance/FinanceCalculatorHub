@@ -1,105 +1,197 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PF Calculator - Finance Calculator Hub</title>
 
-<style>
-body{
-    font-family:Arial,sans-serif;
-    background:#f4f7fb;
-    margin:0;
-}
+<title>PF Calculator - EPF Retirement Savings Calculator</title>
 
-.container{
-    max-width:700px;
-    margin:50px auto;
-    background:white;
-    padding:30px;
-    border-radius:10px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
+<meta name="description"
+content="Free PF Calculator to estimate EPF balance, employer contribution, employee contribution and retirement savings instantly.">
 
-h1{
-    text-align:center;
-    color:#0d6efd;
-}
+<meta name="keywords"
+content="PF Calculator, EPF Calculator, Provident Fund Calculator, Retirement Calculator">
 
-input{
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    margin-bottom:20px;
-    border:1px solid #ccc;
-    border-radius:6px;
-}
+<meta name="robots" content="index, follow">
 
-button{
-    width:100%;
-    padding:15px;
-    background:#0d6efd;
-    color:white;
-    border:none;
-    border-radius:6px;
-    font-size:18px;
-    cursor:pointer;
-}
-
-.result{
-    margin-top:20px;
-    padding:20px;
-    background:#eef5ff;
-    border-radius:8px;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
 
-<div class="container">
+<nav class="navbar">
+
+<div class="logo">
+<a href="index.html" style="text-decoration:none;color:#0d6efd;">
+💰 Finance Calculator Hub
+</a>
+</div>
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+</ul>
+
+</nav>
+
+<div class="calculator-container">
 
 <h1>PF Calculator</h1>
 
-<label>Monthly Basic Salary (₹)</label>
-<input type="number" id="salary">
+<label>Monthly Basic Salary (₹)</label> <input type="number" id="salary" placeholder="Enter Basic Salary">
 
-<label>Years of Service</label>
-<input type="number" id="years">
+<label>Employee PF Contribution (%)</label> <input type="number" id="employeeRate" value="12">
+
+<label>Employer PF Contribution (%)</label> <input type="number" id="employerRate" value="12">
+
+<label>Years of Service</label> <input type="number" id="years" placeholder="Enter Number of Years">
 
 <button onclick="calculatePF()">
 Calculate PF
 </button>
 
-<div class="result" id="result">
+<div id="result" class="result-box">
 Enter values and click Calculate.
 </div>
 
 </div>
 
+<section class="calculator-content">
+
+<h2>What is PF Calculator?</h2>
+
+<p>
+A PF Calculator helps employees estimate the growth of their Employees' Provident Fund (EPF) savings over time. It calculates contributions made by both employee and employer and estimates retirement corpus.
+</p>
+
+<h2>Benefits of PF Calculator</h2>
+
+<ul>
+
+<li>Estimate retirement savings</li>
+
+<li>Track EPF growth</li>
+
+<li>Understand employer contribution</li>
+
+<li>Plan long-term finances</li>
+
+<li>Visualize retirement corpus</li>
+
+</ul>
+
+<h2>How EPF Works</h2>
+
+<p>
+EPF is a government-backed retirement savings scheme where both employee and employer contribute a fixed percentage of salary every month.
+</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>What is EPF?</h3>
+
+<p>
+Employees' Provident Fund (EPF) is a retirement benefit scheme managed by EPFO in India.
+</p>
+
+<h3>Who contributes to PF?</h3>
+
+<p>
+Both employee and employer contribute a percentage of the employee's salary every month.
+</p>
+
+<h3>Can PF be withdrawn?</h3>
+
+<p>
+Yes, PF can be withdrawn according to EPFO withdrawal rules and eligibility conditions.
+</p>
+
+</section>
+
+<footer>
+
+<div class="footer-links">
+
+<a href="about.html">About Us</a> |
+
+<a href="contact.html">Contact</a> |
+
+<a href="privacy-policy.html">Privacy Policy</a> |
+
+<a href="disclaimer.html">Disclaimer</a> |
+
+<a href="terms.html">Terms</a>
+
+</div>
+
+<p>© 2026 Finance Calculator Hub</p>
+
+</footer>
+
 <script>
 
-function calculatePF(){
+function calculatePF() {
 
 let salary =
 parseFloat(document.getElementById("salary").value);
 
+let employeeRate =
+parseFloat(document.getElementById("employeeRate").value);
+
+let employerRate =
+parseFloat(document.getElementById("employerRate").value);
+
 let years =
 parseFloat(document.getElementById("years").value);
 
-let monthlyPF = salary * 0.12;
+if(!salary || !employeeRate || !employerRate || !years){
 
-let totalPF =
-monthlyPF * 12 * years;
+document.getElementById("result").innerHTML =
+"Please enter all values.";
 
-document.getElementById("result").innerHTML = `
-<p><strong>Monthly PF Contribution:</strong> ₹${monthlyPF.toFixed(2)}</p>
-<p><strong>Total PF Accumulated:</strong> ₹${totalPF.toFixed(2)}</p>
-`;
+return;
+
+}
+
+let employeeContribution =
+salary * employeeRate / 100;
+
+let employerContribution =
+salary * employerRate / 100;
+
+let monthlyContribution =
+employeeContribution + employerContribution;
+
+let totalMonths =
+years * 12;
+
+let totalInvestment =
+monthlyContribution * totalMonths;
+
+let estimatedPF =
+totalInvestment * 1.08; // simplified growth estimate
+
+let growth =
+estimatedPF - totalInvestment;
+
+document.getElementById("result").innerHTML =
+
+`<p><strong>Monthly Employee Contribution:</strong> ₹${employeeContribution.toFixed(2)}</p>
+
+<p><strong>Monthly Employer Contribution:</strong> ₹${employerContribution.toFixed(2)}</p>
+
+<p><strong>Total Contributions:</strong> ₹${totalInvestment.toFixed(2)}</p>
+
+<p><strong>Estimated Growth:</strong> ₹${growth.toFixed(2)}</p>
+
+<p><strong>Estimated PF Corpus:</strong> ₹${estimatedPF.toFixed(2)}</p>`;
 
 }
 
 </script>
 
 </body>
+
 </html>
