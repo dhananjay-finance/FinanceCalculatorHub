@@ -1,96 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EMI Calculator - Finance Calculator Hub</title>
+<title>EMI Calculator - Calculate Loan EMI Online Free</title>
 
-<style>
+<meta name="description"
+content="Free EMI Calculator to calculate monthly loan EMI, total interest and total repayment amount for home loan, car loan and personal loan.">
 
-body{
-    font-family:Arial,sans-serif;
-    background:#f4f7fb;
-    margin:0;
-    padding:0;
-}
+<meta name="keywords"
+content="EMI Calculator, Loan EMI Calculator, Home Loan EMI Calculator, Car Loan EMI Calculator">
 
-.container{
-    max-width:700px;
-    margin:50px auto;
-    background:white;
-    padding:30px;
-    border-radius:10px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
+<meta name="robots" content="index, follow">
 
-h1{
-    text-align:center;
-    color:#0d6efd;
-}
-
-input{
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    margin-bottom:20px;
-    border:1px solid #ccc;
-    border-radius:6px;
-}
-
-button{
-    width:100%;
-    padding:15px;
-    background:#0d6efd;
-    color:white;
-    border:none;
-    border-radius:6px;
-    font-size:18px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#0b5ed7;
-}
-
-.result{
-    margin-top:25px;
-    padding:20px;
-    background:#eef5ff;
-    border-radius:8px;
-}
-
-.result p{
-    font-size:18px;
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
 
-<div class="container">
+<!-- Navbar -->
+
+<nav class="navbar">
+
+<div class="logo">
+<a href="index.html" style="text-decoration:none;color:#0d6efd;">
+💰 Finance Calculator Hub
+</a>
+</div>
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+</ul>
+
+</nav>
+
+<!-- Calculator -->
+
+<div class="calculator-container">
 
 <h1>EMI Calculator</h1>
 
 <label>Loan Amount (₹)</label>
-<input type="number" id="loan">
+<input type="number" id="loan" placeholder="Enter Loan Amount">
 
 <label>Annual Interest Rate (%)</label>
-<input type="number" id="rate">
+<input type="number" id="rate" placeholder="Enter Interest Rate">
 
 <label>Loan Tenure (Years)</label>
-<input type="number" id="years">
+<input type="number" id="years" placeholder="Enter Loan Tenure">
 
 <button onclick="calculateEMI()">
 Calculate EMI
 </button>
 
-<div class="result" id="result">
-<p>Enter values and click Calculate.</p>
+<div class="result-box" id="result">
+Enter values and click Calculate.
 </div>
 
 </div>
+
+<!-- SEO Content -->
+
+<section class="calculator-content">
+
+<h2>What is EMI Calculator?</h2>
+
+<p>
+An EMI Calculator helps you calculate the Equated Monthly Installment (EMI) payable towards a loan. It instantly calculates your monthly EMI, total interest payable and total repayment amount.
+</p>
+
+<h2>Benefits of EMI Calculator</h2>
+
+<ul>
+<li>Instant EMI calculation</li>
+<li>Compare loan options easily</li>
+<li>Plan your monthly budget</li>
+<li>Know total interest payable</li>
+<li>Make informed financial decisions</li>
+</ul>
+
+<h2>EMI Formula</h2>
+
+<p>
+EMI = [P × R × (1 + R)^N] ÷ [(1 + R)^N − 1]
+</p>
+
+<ul>
+<li>P = Principal Loan Amount</li>
+<li>R = Monthly Interest Rate</li>
+<li>N = Number of Monthly Installments</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>What is EMI?</h3>
+
+<p>
+EMI stands for Equated Monthly Installment. It is the fixed amount paid every month towards loan repayment.
+</p>
+
+<h3>Can I calculate Home Loan EMI?</h3>
+
+<p>
+Yes. This calculator works for Home Loans, Car Loans, Personal Loans and Business Loans.
+</p>
+
+<h3>Does EMI change every month?</h3>
+
+<p>
+For fixed-rate loans, EMI remains constant. For floating-rate loans, EMI may change depending on interest rate revisions.
+</p>
+
+</section>
+
+<!-- Footer -->
+
+<footer>
+
+<div class="footer-links">
+<a href="about.html">About Us</a> |
+<a href="contact.html">Contact</a> |
+<a href="privacy-policy.html">Privacy Policy</a> |
+<a href="disclaimer.html">Disclaimer</a> |
+<a href="terms.html">Terms</a>
+</div>
+
+<p>© 2026 Finance Calculator Hub</p>
+
+</footer>
 
 <script>
 
@@ -100,25 +140,36 @@ let P = parseFloat(document.getElementById("loan").value);
 let annualRate = parseFloat(document.getElementById("rate").value);
 let years = parseFloat(document.getElementById("years").value);
 
+if(!P || !annualRate || !years){
+
+document.getElementById("result").innerHTML =
+"Please enter all values.";
+
+return;
+
+}
+
 let r = annualRate / 12 / 100;
 let n = years * 12;
 
-let emi = (P * r * Math.pow(1+r,n))
-          /
-          (Math.pow(1+r,n)-1);
+let emi =
+(P * r * Math.pow(1+r,n))
+/
+(Math.pow(1+r,n)-1);
 
 let totalPayment = emi * n;
 let totalInterest = totalPayment - P;
 
-document.getElementById("result").innerHTML = `
-<p><strong>Monthly EMI:</strong> ₹${emi.toFixed(2)}</p>
+document.getElementById("result").innerHTML =
+
+`<p><strong>Monthly EMI:</strong> ₹${emi.toFixed(2)}</p>
 <p><strong>Total Interest:</strong> ₹${totalInterest.toFixed(2)}</p>
-<p><strong>Total Payment:</strong> ₹${totalPayment.toFixed(2)}</p>
-`;
+<p><strong>Total Payment:</strong> ₹${totalPayment.toFixed(2)}</p>`;
 
 }
 
 </script>
 
 </body>
+
 </html>
