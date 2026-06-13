@@ -261,4 +261,25 @@ footer{
     #searchInput{
         width:95%;
     }
+}.calculator-content{
+    max-width:900px;
+    margin:40px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.calculator-content h2{
+    margin-top:25px;
+    color:#2563eb;
+}
+
+.calculator-content h3{
+    margin-top:15px;
+}
+
+.calculator-content p,
+.calculator-content li{
+    line-height:1.8;
 }
